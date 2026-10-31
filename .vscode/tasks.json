@@ -2,19 +2,18 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build-raylib",
+            "label": "build-c-console",
             "type": "shell",
             "command": "gcc",
             "args": [
-                "-g", "-std=c17", "-Wall",
+                "-g", "-std=c11", "-Wall",
                 "${file}",
-                "-o", "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-lraylibdll", "-lopengl32", "-lgdi32", "-lwinmm"
+                "-o", "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
-            "options": { "cwd": "${workspaceFolder}" },
+            "options": { "cwd": "${fileDirname}" },
             "group": { "kind": "build", "isDefault": true },
             "problemMatcher": [ "$gcc" ],
-            "detail": "C 文件 + raylib（gcc，D:\\mingw64 里的 raylib DLL 版）"
+            "detail": "纯 C 控制台程序（gcc，不链接任何图形库）"
         },
         {
             "label": "build-easyx",
@@ -26,10 +25,10 @@
                 "-o", "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-leasyx", "-lgdi32"
             ],
-            "options": { "cwd": "${workspaceFolder}" },
+            "options": { "cwd": "${fileDirname}" },
             "group": "build",
             "problemMatcher": [ "$gcc" ],
-            "detail": "C++ 文件 + EasyX（g++，EasyX 只支持 C++）"
+            "detail": "C++ + EasyX 图形程序"
         }
     ]
 }
